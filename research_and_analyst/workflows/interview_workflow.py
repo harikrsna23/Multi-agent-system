@@ -78,7 +78,7 @@ class InterviewGraphBuilder:
 
             formatted = "\n\n---\n\n".join(
                 [
-                    f'<Document href="{doc.get("url", "#")}"/>\n{doc.get("content", "")}\n</Document>'
+                    f'<Document href="{doc.get("url", "#") if isinstance(doc, dict) else "#"}"/>\n{doc.get("content", "") if isinstance(doc, dict) else str(doc)}\n</Document>'
                     for doc in search_docs
                 ]
             )
